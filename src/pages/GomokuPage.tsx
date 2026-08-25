@@ -58,6 +58,20 @@ export default function GomokuPage() {
               role="img"
               aria-label="五子棋棋盘，十五路"
             >
+              <defs>
+                <radialGradient id="stoneBlackGrad" cx="38%" cy="35%" r="68%">
+                  <stop offset="0%" stopColor="#3c3532" />
+                  <stop offset="40%" stopColor="#1c1512" />
+                  <stop offset="75%" stopColor="#0d0908" />
+                  <stop offset="100%" stopColor="#060403" />
+                </radialGradient>
+                <radialGradient id="stoneWhiteGrad" cx="36%" cy="32%" r="70%">
+                  <stop offset="0%" stopColor="#faf3e2" />
+                  <stop offset="45%" stopColor="#f0e3c4" />
+                  <stop offset="78%" stopColor="#d9c298" />
+                  <stop offset="100%" stopColor="#b89968" />
+                </radialGradient>
+              </defs>
               {INDEXES.map((i) => (
                 <g key={i}>
                   <line className="grid-line" x1={0} y1={i} x2={14} y2={i} />
@@ -84,6 +98,7 @@ export default function GomokuPage() {
                     <circle
                       key={`stone-${r}-${c}`}
                       className={cell === 1 ? 'stone black' : 'stone white'}
+                      fill={cell === 1 ? 'url(#stoneBlackGrad)' : 'url(#stoneWhiteGrad)'}
                       cx={c}
                       cy={r}
                       r={0.42}
