@@ -1,0 +1,283 @@
+:root {
+  --bg: #1c1008;
+  --bg-deep: #120a06;
+  --ink: #f3e6c8;
+  --muted: #cbb892;
+  --gold: #e0c07a;
+  --wood-light: #e2b36a;
+  --wood: #c48a45;
+  --wood-dark: #8f5c2c;
+  --line: #5c3a21;
+  --panel: #3a2416;
+  --danger: #c41e3a;
+  --sans: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --serif: 'Songti SC', 'Noto Serif SC', 'SimSun', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at top, #3a2214 0%, transparent 55%),
+    var(--bg-deep);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.home,
+.gomoku {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+
+.home-hero {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  letter-spacing: 0.28em;
+  font-size: 13px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.home h1,
+.game-card h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+}
+
+.home h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 5vw, 48px);
+}
+
+.lede,
+.game-card p,
+.hint {
+  margin: 0;
+  color: var(--muted);
+}
+
+.game-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 180px;
+  padding: 24px;
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(255, 220, 160, 0.08), transparent 40%),
+    var(--panel);
+  border: 1px solid rgba(224, 192, 122, 0.28);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.game-card h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.card-action {
+  margin-top: auto;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.game-card:not(.is-disabled):hover {
+  border-color: var(--gold);
+}
+
+.game-card.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.gomoku-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.back {
+  color: var(--gold);
+}
+
+.status {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 28px;
+}
+
+.gomoku-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 28px;
+  align-items: start;
+}
+
+.board-frame {
+  width: min(100%, 74dvh, 720px);
+  margin: 0 auto;
+  padding: 3.2%;
+  border-radius: 6px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(92, 58, 33, 0.12) 0 2px,
+      rgba(255, 224, 170, 0.14) 2px 3px,
+      transparent 3px 8px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(80, 40, 10, 0.08) 0 12px,
+      transparent 12px 26px
+    ),
+    linear-gradient(145deg, var(--wood-light), var(--wood) 45%, var(--wood-dark));
+  border: 10px solid #5a3318;
+  box-shadow:
+    inset 0 0 28px rgba(70, 30, 8, 0.28),
+    0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.board-stack {
+  position: relative;
+}
+
+.board {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: manipulation;
+}
+
+.hit-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.hit-cell {
+  position: absolute;
+  width: 6.2%;
+  height: 6.2%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.grid-line {
+  stroke: var(--line);
+  stroke-width: 0.045;
+}
+
+.star {
+  fill: var(--line);
+}
+
+.stone.black {
+  fill: #16110e;
+  stroke: #000;
+  stroke-width: 0.03;
+}
+
+.stone.white {
+  fill: #f7f1e4;
+  stroke: #8a6a45;
+  stroke-width: 0.035;
+}
+
+.win-line {
+  stroke: var(--danger);
+  stroke-width: 0.14;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.last-mark {
+  fill: var(--danger);
+  pointer-events: none;
+}
+
+.gomoku-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.actions button {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(224, 192, 122, 0.4);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.actions button:hover:not(:disabled) {
+  border-color: var(--gold);
+}
+
+.actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 840px) {
+  .gomoku-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: row;
+  }
+
+  .actions button {
+    flex: 1;
+  }
+
+  .status {
+    font-size: 22px;
+  }
+}
