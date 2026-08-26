@@ -10,8 +10,8 @@ const games = [
   {
     id: 'checkers',
     name: '跳棋',
-    blurb: '即将推出',
-    to: null,
+    blurb: '中式跳棋，红绿对向，同一设备轮流跳',
+    to: '/checkers',
   },
 ]
 

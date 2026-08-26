@@ -44,7 +44,8 @@ button {
 }
 
 .home,
-.gomoku {
+.gomoku,
+.checkers {
   width: min(1100px, calc(100% - 32px));
   margin: 0 auto;
   padding: 28px 0 48px;
@@ -233,6 +234,50 @@ button {
 
 .last-mark {
   fill: var(--danger);
+  pointer-events: none;
+}
+
+.checkers-line {
+  stroke: var(--line);
+  stroke-width: 0.045;
+}
+
+.hole {
+  fill: rgba(92, 58, 33, 0.35);
+  stroke: var(--line);
+  stroke-width: 0.03;
+}
+
+.hole.home-red {
+  fill: rgba(180, 58, 50, 0.28);
+}
+
+.hole.home-green {
+  fill: rgba(47, 122, 74, 0.28);
+}
+
+.marble {
+  filter: drop-shadow(0.02px 0.035px 0.03px rgba(30, 14, 4, 0.4));
+  stroke-width: 0.025;
+}
+
+.marble.red {
+  stroke: #5a1c18;
+}
+
+.marble.green {
+  stroke: #143821;
+}
+
+.selected-ring {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 0.045;
+}
+
+.dest-mark {
+  fill: var(--gold);
+  opacity: 0.85;
   pointer-events: none;
 }
 
