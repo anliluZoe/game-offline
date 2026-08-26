@@ -109,9 +109,14 @@ export default function CheckersPage() {
                 return (
                   <g key={cellKey}>
                     <circle
-                      className={
-                        isHomeRed ? 'hole home-red' : isHomeGreen ? 'hole home-green' : 'hole'
-                      }
+                      className={[
+                        'hole',
+                        isHomeRed ? 'home-red' : '',
+                        isHomeGreen ? 'home-green' : '',
+                        isDest ? 'dest-hole' : '',
+                      ]
+                        .filter(Boolean)
+                        .join(' ')}
                       cx={cell.x * X_SCALE}
                       cy={cell.y * Y_SCALE}
                       r={0.16}
@@ -138,7 +143,7 @@ export default function CheckersPage() {
                         className="dest-mark"
                         cx={cell.x * X_SCALE}
                         cy={cell.y * Y_SCALE}
-                        r={0.11}
+                        r={0.14}
                       />
                     ) : null}
                     {isLastTo ? (

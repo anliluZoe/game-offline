@@ -256,6 +256,12 @@ button {
   fill: rgba(47, 122, 74, 0.28);
 }
 
+.hole.dest-hole {
+  fill: rgba(224, 192, 122, 0.5);
+  stroke: var(--gold);
+  stroke-width: 0.05;
+}
+
 .marble {
   filter: drop-shadow(0.02px 0.035px 0.03px rgba(30, 14, 4, 0.4));
   stroke-width: 0.025;
@@ -272,13 +278,19 @@ button {
 .selected-ring {
   fill: none;
   stroke: var(--gold);
-  stroke-width: 0.045;
+  stroke-width: 0.05;
 }
 
 .dest-mark {
-  fill: var(--gold);
-  opacity: 0.85;
+  fill: #f3d27a;
+  stroke: #5a3318;
+  stroke-width: 0.03;
   pointer-events: none;
+}
+
+.checkers .hit-cell {
+  width: 8%;
+  height: 7%;
 }
 
 .gomoku-panel {
